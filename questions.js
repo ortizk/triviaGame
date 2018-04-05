@@ -15,9 +15,4 @@ const questions = [
 	}
 	];
 
-$("#startGame").click( (e)=>{
-	console.log("start game button was clicked");
-	console.log(questions[0].q)
-	// $("#currentQuestion").append("<p>" + $(questions[0].q) + "</p");
-})
 
