@@ -38,35 +38,84 @@ $("#startGame").click( (e)=>{
 
 	$("#checkAnswerButton").click( (e) => {
 		console.log("check answer was clicked");
-		whichBox()
+		checkAnswer();
+		// whichBox()
 	})
 
-	const whichBox = () => {
-		if($("#opt1")[0].checked && questions[0].opt1 === questions[0].answer) {
-			console.log("you got the right answer");
-		}
-		else if($("#opt2")[0].checked && questions[0].opt2 === questions[0].answer){
-			questions[0].opt1 === questions[0].answer
-			console.log("you got the right answer");
-		}
-		else if($("#opt3")[0].checked && questions[0].opt3 === questions[0].answer){
-			questions[0].opt1 === questions[0].answer
-			console.log("you got the right answer");
-		}
-		else if($("#opt4")[0].checked && questions[0].opt4 === questions[0].answer){
-			questions[0].opt1 === questions[0].answer
-			console.log("you got the right answer");
-		}
+});
 
+
+const checkAnswer = () => {
+	var option = $('input[name=options]:checked')[0].id;
+	if ($('input[name=options]:checked').length > 0 && questions[0][option] === questions[0].answer ) {
+		console.log($('input[name=options]:checked')[0].id)
+		console.log("RIGHT");
+		console.log('correct answer', questions[0].answer);
+		console.log('picked answer', questions[0][option]);
 	}
+	else {
+		console.log("WRONG");
+	}
+}
+
+// 	const whichBox = () => {
+// 		if($("#opt1")[0].checked && questions[0].opt1 === questions[0].answer) {
+// 			console.log("you got the right answer");
+// 		}
+// 		else if($("#opt2")[0].checked && questions[0].opt2 === questions[0].answer){
+// 			questions[0].opt1 === questions[0].answer
+// 			console.log("you got the right answer");
+// 		}
+// 		else if($("#opt3")[0].checked && questions[0].opt3 === questions[0].answer){
+// 			questions[0].opt1 === questions[0].answer
+// 			console.log("you got the right answer");
+// 		}
+// 		else if($("#opt4")[0].checked && questions[0].opt4 === questions[0].answer){
+// 			questions[0].opt1 === questions[0].answer
+// 			console.log("you got the right answer");
+// 		}
+
+// 	}
 
 
-})
+// })
+// ---------------------------------------trying to write code to check if it's right AND wrong
 
+// const whichBox = () => {
+// 		if($("#opt1")[0].checked && questions[0].opt1 === questions[0].answer) {
+// 			console.log("you got the right answer");
+// 		}
+// 		else if($("#opt2")[0].checked && questions[0].opt2 === questions[0].answer){
+// 			questions[0].opt1 === questions[0].answer
+// 			console.log("you got the right answer");
+// 		}
+// 		else if($("#opt3")[0].checked && questions[0].opt3 === questions[0].answer){
+// 			questions[0].opt1 === questions[0].answer
+// 			console.log("you got the right answer");
+// 		}
+// 		else if($("#opt4")[0].checked && questions[0].opt4 === questions[0].answer){
+// 			questions[0].opt1 === questions[0].answer
+// 			console.log("you got the right answer");
+// 		}
 
+// 	}
 
-
-
+// const checkFirstBox = () => {
+// 	if($("#opt1")[0].checked && questions[0].opt1 === questions[0].answer) {
+// 			console.log("RIGHT");
+// 		}
+// 	else {
+// 		console.log("WRONG")
+// 	}
+// }
+// const checkAnswer = () => {
+// 	if ($('input[name=options]:checked').length > 0 && questions[0].opt1 === questions[0].answer ) {
+// 		console.log("RIGHT");
+// 	}
+// 	else {
+// 		console.log("WRONG");
+// 	}
+// }
 
 
 
