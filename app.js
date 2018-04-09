@@ -1,19 +1,29 @@
 console.log('JS is working!');
 
-// var count = 5;
+// -------------TIMER STARTS-----------
 
-// function timer = () => {
-// var counter = setInterval(timer, 1000);
-// 	count = count - 1;
-// 	if (count <= 0)
-// {
-// 	clearInterval(counter);
+var timer = $("#timer");
+var counter = 0;
+var timeLeft = 15;
 
-// 	return;
-// }
-// $("#timer") = count + "secs";
-// }
-// console.log(timer());
+
+$("#timer").text(timeLeft)
+
+
+const timeIt = () => {
+	counter++;
+	timer.text(timeLeft - counter);
+	if(counter === timeLeft){
+		console.log('timer stopped!')
+		clearInterval(interval);
+	}
+};
+	
+var interval = setInterval(timeIt, 1000);
+// -------------TIMER ENDS----------
+
+
+
 
 const getRandomNumber = () => {
 	return Math.floor((Math.random() * questions.length));
@@ -99,6 +109,9 @@ const makeBoard = () => {
 const clearBoard = () => {
 	$("#questionForm").empty();
 }
+
+// $("#beer").css("height", transferBeer);
+console.log(beerVal);
 
 
 

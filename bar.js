@@ -1,25 +1,25 @@
+var beerVal = 0;
+
+function transferBeer (beerVal) {
+	return beerVal;
+}; 
+
+
 $("body").keyup((e) => {
 	if(32 === e.keyCode){
+		transferBeer(beerVal += 2);
 		console.log("space bar is being pressed");
 		$("#beer").animate({
-			"top": "-=10px",
-			"height": "+=10px"
-		}, 90);
+			"top": "-=2px",
+			"height": "+=2px"
+		}, 50);
 	}
+		console.log(beerVal);
 });
 
-// var count = 30;
 
-// var counter = setInterval(timer, 1000);
 
-// function timer()
-// {
-// 	count = count - 1;
-// 	if (count <= 0)
-// }
-// 	clearInterval(counter);
 
-// 	return;
-// }
-// $("#timer") = count + "secs";
-// }
+// TODO
+// insert tiimer
+// make beer a global variable that can be accessed and displayed when player starts game

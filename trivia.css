@@ -1,0 +1,32 @@
+h1 {
+	color: pink;
+}
+#currentQuestion {
+	height: 300px;
+	width: 800px;
+	background-color: #d6c7c7;
+}
+
+.hide {
+	display: none;
+}
+img {
+	position: absolute;
+	/*if you change top left, change top and left of 
+	beer and mug. Remember to include img value*/
+	top: 200px;
+	left: 200px;
+}
+#beerMug {
+	z-index: 2;
+	width: 500px;
+	height: 500px;
+}
+#beer {
+	z-index: 1;
+	width: 300px;
+	height: 0px;
+	top: 557px;
+	left: 217px;
+	border-radius: 25px;
+}
