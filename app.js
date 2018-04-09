@@ -1,29 +1,31 @@
 console.log('JS is working!');
 
+
+// -------------DISABLES KEYUP FUNCTIONALITY FROM BAR SO PLAYER CAN NO LONGER INCREASE BEER----------------
+$('*').off('keyup');
+
 // -------------TIMER STARTS-----------
 
 var timer = $("#timer");
 var counter = 0;
-var timeLeft = 15;
+var timeLeft = 5;
 
 
 $("#timer").text(timeLeft)
 
-
-const timeIt = () => {
-	counter++;
-	timer.text(timeLeft - counter);
-	if(counter === timeLeft){
-		console.log('timer stopped!')
-		clearInterval(interval);
-	}
+const onClickTimer = () => {
+	const timeIt = () => {
+		counter++;
+		timer.text(timeLeft - counter);
+		if(counter === timeLeft){
+			console.log('timer stopped!')
+			clearInterval(interval);
+		}
+	};	
+	var interval = setInterval(timeIt, 1000);
 };
-	
-var interval = setInterval(timeIt, 1000);
+
 // -------------TIMER ENDS----------
-
-
-
 
 const getRandomNumber = () => {
 	return Math.floor((Math.random() * questions.length));
@@ -34,6 +36,8 @@ var random = getRandomNumber();
 $("#startGame").click( (e)=>{
 	console.log("start game button was clicked");
 	makeBoard();
+	$('#timer').removeClass('hide');
+	onClickTimer();
 
 	$('#checkAnswerButton').removeClass('hide');
 	$('#startGame').addClass('hide');
@@ -110,8 +114,18 @@ const clearBoard = () => {
 	$("#questionForm").empty();
 }
 
-// $("#beer").css("height", transferBeer);
+// --------TRANSFERING BEER LEVEL FROM BAR--------
 console.log(beerVal);
+
+console.log(localStorage.barToTrivia);
+
+let beerAtTrivia = parseInt(localStorage.barToTrivia);
+
+console.log(beerAtTrivia);
+
+$("#beer").css("height", beerAtTrivia);
+
+//------------------------------------------------
 
 
 

@@ -4,6 +4,9 @@ function transferBeer (beerVal) {
 	return beerVal;
 }; 
 
+const addToLocalStorage = (value) => {
+	localStorage.setItem('barToTrivia', value)
+}
 
 $("body").keyup((e) => {
 	if(32 === e.keyCode){
@@ -15,8 +18,8 @@ $("body").keyup((e) => {
 		}, 50);
 	}
 		console.log(beerVal);
+		addToLocalStorage(beerVal);
 });
-
 
 
 
