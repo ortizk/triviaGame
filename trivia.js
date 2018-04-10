@@ -155,7 +155,6 @@ const timesUp = () => {
 	$("#checkAnswerButton").addClass('hide');
 	$("#nextButton").removeClass('hide');
 	$("#triviaBeer").css("height", beerAtTrivia -= 15);
-	questions[random].answer.css('color', red);
 };
 
 
