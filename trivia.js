@@ -5,7 +5,7 @@ console.log('JS is working!');
 $('*').off('keyup');
 
 // --------TRANSFERING BEER LEVEL FROM BAR--------
-console.log(beerVal);
+beerVal = Number(location.search.split('=')[1]);
 
 console.log(localStorage.barToTrivia);
 
@@ -14,26 +14,26 @@ let beerAtTrivia = parseInt(localStorage.barToTrivia);
 console.log(beerAtTrivia);
 
 $("#triviaBeer").css("height", beerAtTrivia);
-
+$('#beerMugTrivia').css('bottom', 0);
+$('#beerMugTrivia').css('right', 0);
 
 // -------------TIMER-----------
 
 var timer = $("#timer");
-var counter = null;
 var timeLeft = 5;
-
 var interval;
 
 $("#timer").text(timeLeft)
 
 const onClickTimer = () => {
+	timeLeft = 5;
+	timer.text(timeLeft);
 	const timeIt = () => {
-		counter++;
-		timer.text(timeLeft - counter);
-		if(counter === timeLeft){
-			counter = -1;
+		timeLeft--;
+		timer.text(timeLeft);
+		if(timeLeft === 0){
 			clearInterval(interval);
-			console.log('time is up!')
+			console.log('time is up!');
 			timesUp();
 		}
 	};	
@@ -90,7 +90,6 @@ $("#nextButton").click( (e) => {
 	$('#checkAnswerButton').removeClass('hide');
 });
 
-let cssBeerTop = 282;
 
 const checkAnswer = (option) => {
 	if ($('input[name=options]:checked').length > 0 && questions[random][option] === questions[random].answer ) {
@@ -98,44 +97,51 @@ const checkAnswer = (option) => {
 		console.log("RIGHT");
 		console.log('correct answer', questions[random].answer);
 		console.log('picked answer', questions[random][option]);
-		$("#triviaBeer").css("top", cssBeerTop -= 15);
 		$("#triviaBeer").css("height", beerAtTrivia += 15);
 	}
 	else {
 		console.log(`WRONG, it's ${questions[random].answer}`);
-		$("#triviaBeer").css("top", cssBeerTop += 15);
 		$("#triviaBeer").css("height", beerAtTrivia -= 15);
 	}
 }
 
 
 const makeBoard = () => {
-		$("#questionForm").append("<p>" + questions[random].q + "</p>");
+		$("#questionForm").append("<div>" + questions[random].q + "</div>");
 
 		// make this into a function
+		var label = document.createElement("label");
 		var opt1 = document.createElement("input");
+		var p = document.createElement("p");
+		p.textContent = questions[random].opt1;
 		opt1.type = "radio";
 		opt1.name = "options";
 		opt1.id = "opt1";
-		$("#questionForm").append(opt1, "<div>" + questions[random].opt1 + "</div>");
+		label.appendChild(opt1);
+		label.appendChild(p);
+		label.onclick = function(){
+			clearInterval(interval);
+		}
+		$("#questionForm").append(label);
+
 
 		var opt2 = document.createElement("input");
 		opt2.type = "radio";
 		opt2.name = "options";
 		opt2.id = "opt2"
-		$("#questionForm").append(opt2, "<div>" + questions[random].opt2 + "</div>");
+		$("#questionForm").append(opt2, "<p>" + questions[random].opt2 + "</p>");
 
 		var opt3 = document.createElement("input");
 		opt3.type = "radio";
 		opt3.name = "options";
 		opt3.id = "opt3";
-		$("#questionForm").append(opt3, "<div>" + questions[random].opt3 + "</div>");
+		$("#questionForm").append(opt3, "<p>" + questions[random].opt3 + "</p>");
 
 		var opt4 = document.createElement("input");
 		opt4.type = "radio";
 		opt4.name = "options";
 		opt4.id = "opt4";
-		$("#questionForm").append(opt4, "<div>" + questions[random].opt4 + "</div>");
+		$("#questionForm").append(opt4, "<p>" + questions[random].opt4 + "</p>");
 	};
 
 const clearBoard = () => {
@@ -151,7 +157,9 @@ const timesUp = () => {
 	$("#triviaBeer").css("height", beerAtTrivia -= 15);
 };
 
-
+$('option').click(function(){
+	console.log('an opt was clicked');
+})
 
 
 

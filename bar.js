@@ -30,48 +30,50 @@ var timeLeft1 = 3;
 
 var interval1;
 
-$("#timer1").text(timeLeft1)
+$("#timer1").text(timeLeft1);
 
-	const timeIt1 = () => {
-		counter1++;
-		timer1.text(timeLeft1 - counter1);
-		if(counter1 === timeLeft1){
-			clearInterval(interval1);
-			$("#timer1").addClass("hide");
-			$("#spacebar").removeClass("hide");
-			wholeBeerTimer();
+const timeIt1 = () => {
+	counter1++;
+	timer1.text(timeLeft1 - counter1);
+	if(counter1 === timeLeft1){
+		clearInterval(interval1);
+		$("#timer1").addClass("hide");
+		$("#spacebar").removeClass("hide");
+		wholeBeerTimer();
 
 
-			console.log('HIT SPACE BAR')
-		}
-	};	
-	interval = setInterval(timeIt1, 1000);
+		console.log('HIT SPACE BAR')
+	}
+};	
+
+interval1 = setInterval(timeIt1, 1000);
+
 
 // --------------------------------
 
 const wholeBeerTimer = () => {
-var timer2 = $("#timer2");
-var counter2 = null;
-var timeLeft2 = 10;
+	var timer2 = $("#timer2");
+	var counter2 = null;
+	var timeLeft2 = 10;
 
-var interval2;
+	var interval2;
 
-$("#timer2").text(timeLeft2)
+	$("#timer2").text(timeLeft2)
 
-const beerTimer = () => {
-	counter2++;
-	timer2.text(timeLeft2 - counter2);
-	if(counter2 === timeLeft2){
-		clearInterval(interval2);
-		$("#playLink").removeClass("hide");
-		$("#homeLink").removeClass("hide");	
-		$("#spacebar").addClass("hide");
-		
-		$('*').off('keyup');
+	const beerTimer = () => {
+		counter2++;
+		timer2.text(timeLeft2 - counter2);
+		if(counter2 === timeLeft2){
+			clearInterval(interval2);
+			$('#playLink').attr('href', 'trivia.html?beerVal=' + beerVal);
+			$("#playLink").removeClass("hide");
+			$("#homeLink").removeClass("hide");	
+			$("#spacebar").addClass("hide");
+			
+			$('*').off('keyup');
+		}
 	}
-}
-interval2 = setInterval(beerTimer, 1000);
-
+	interval2 = setInterval(beerTimer, 1000);
 };
 
 

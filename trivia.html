@@ -5,35 +5,44 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="trivia.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
 </head>
 <body>
 	<h1>Let's Play!</h1>
-    <div id="timer" class="hide">
-    </div>
-
-	<div class="col-md-8 offset-md-2">
-		<div id="currentQuestion">
-			<div id="timer" class="hide">
-    		</div>
-			<button id="startGame">START</button>
-			<form id="questionForm">
-			</form>
-			<button id="checkAnswerButton" class="hide">Check Answer</button>
-			<button id="nextButton" class="hide">Next Question</button>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div id="currentQuestion">
+					<button id="startGame">START</button>
+					<div class="container">
+						<form id="questionForm">
+						</form>
+					</div>
+					<!-- <div class="col-md-2 offset-md-5"> -->
+						<button id="checkAnswerButton" class="hide">Check Answer</button>
+						<button id="nextButton" class="hide">Next Question</button>
+					<!-- </div> -->
+				</div>
+			</div>
+			
+		</div>
+		<div id="beerMugTrivia">
+			<img src="images/beerMug.png" id="triviaMug">
+			<img src="images/beer.jpg" id="triviaBeer">
 		</div>
 	</div>
-
-	<a id="homeLink" href="home.html">Home</a>
-
-	<div id="beerMugTrivia">
-		<img src="images/beerMug.png" id="triviaBeerMug">
-		<img src="images/beer.jpg" id="triviaBeer">
+	<div class="row">
+		<a id="homeLink" href="home.html">Home</a>
+		<div id="timer" class="hide"></div>
 	</div>
 
-
+			
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="questions.js"></script>
-	<script type="text/javascript" src="bar.js"></script>
-	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="trivia.js"></script>
 </body>
 </html>
+		
+
+
+
