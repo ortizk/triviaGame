@@ -78,6 +78,7 @@ $("#nextButton").click( (e) => {
 	console.log("Next button was clicked, questionCount is at " + questionCount);
 	if(questionCount === 10){
 		console.log("GAME OVER");
+		// put whatever you want to happen in this if statement. Whether it's a new function or whatever
 	};
 	questionCount += 1;
 	clearBoard();
@@ -116,25 +117,25 @@ const makeBoard = () => {
 		opt1.type = "radio";
 		opt1.name = "options";
 		opt1.id = "opt1";
-		$("#questionForm").append(opt1, "<p>" + questions[random].opt1 + "</p>");
+		$("#questionForm").append(opt1, "<div>" + questions[random].opt1 + "</div>");
 
 		var opt2 = document.createElement("input");
 		opt2.type = "radio";
 		opt2.name = "options";
 		opt2.id = "opt2"
-		$("#questionForm").append(opt2, "<p>" + questions[random].opt2 + "</p>");
+		$("#questionForm").append(opt2, "<div>" + questions[random].opt2 + "</div>");
 
 		var opt3 = document.createElement("input");
 		opt3.type = "radio";
 		opt3.name = "options";
 		opt3.id = "opt3";
-		$("#questionForm").append(opt3, "<p>" + questions[random].opt3 + "</p>");
+		$("#questionForm").append(opt3, "<div>" + questions[random].opt3 + "</div>");
 
 		var opt4 = document.createElement("input");
 		opt4.type = "radio";
 		opt4.name = "options";
 		opt4.id = "opt4";
-		$("#questionForm").append(opt4, "<p>" + questions[random].opt4 + "</p>");
+		$("#questionForm").append(opt4, "<div>" + questions[random].opt4 + "</div>");
 	};
 
 const clearBoard = () => {

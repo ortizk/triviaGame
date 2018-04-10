@@ -2,27 +2,33 @@
 <html>
 <head>
 	<title>Trivia</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="trivia.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 <body>
 	<h1>Let's Play!</h1>
     <div id="timer" class="hide">
     </div>
 
-	<button id="startGame">START</button>
-	
-	<div id="currentQuestion">
-		<form id="questionForm">
-		</form>
-		<button id="checkAnswerButton" class="hide">Check Answer</button>
-		<button id="nextButton" class="hide">Next Question</button>
+	<div class="col-md-8 offset-md-2">
+		<div id="currentQuestion">
+			<div id="timer" class="hide">
+    		</div>
+			<button id="startGame">START</button>
+			<form id="questionForm">
+			</form>
+			<button id="checkAnswerButton" class="hide">Check Answer</button>
+			<button id="nextButton" class="hide">Next Question</button>
+		</div>
 	</div>
 
-	<a href="home.html">Home</a>
+	<a id="homeLink" href="home.html">Home</a>
 
-	<img src="images/beerMug.png" id="triviaBeerMug">
-
-	<img src="images/beer.jpg" id="triviaBeer">
+	<div id="beerMugTrivia">
+		<img src="images/beerMug.png" id="triviaBeerMug">
+		<img src="images/beer.jpg" id="triviaBeer">
+	</div>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
