@@ -4,12 +4,25 @@ console.log('JS is working!');
 // -------------DISABLES KEYUP FUNCTIONALITY FROM BAR SO PLAYER CAN NO LONGER INCREASE BEER----------------
 $('*').off('keyup');
 
-// -------------TIMER STARTS-----------
+// --------TRANSFERING BEER LEVEL FROM BAR--------
+console.log(beerVal);
+
+console.log(localStorage.barToTrivia);
+
+let beerAtTrivia = parseInt(localStorage.barToTrivia);
+
+console.log(beerAtTrivia);
+
+$("#triviaBeer").css("height", beerAtTrivia);
+
+
+// -------------TIMER-----------
 
 var timer = $("#timer");
-var counter = 0;
+var counter = null;
 var timeLeft = 5;
 
+var interval;
 
 $("#timer").text(timeLeft)
 
@@ -18,14 +31,16 @@ const onClickTimer = () => {
 		counter++;
 		timer.text(timeLeft - counter);
 		if(counter === timeLeft){
-			console.log('timer stopped!')
+			counter = -1;
 			clearInterval(interval);
+			console.log('time is up!')
+			timesUp();
 		}
 	};	
-	var interval = setInterval(timeIt, 1000);
+	interval = setInterval(timeIt, 1000);
 };
 
-// -------------TIMER ENDS----------
+// --------------------------------
 
 const getRandomNumber = () => {
 	return Math.floor((Math.random() * questions.length));
@@ -45,12 +60,13 @@ $("#startGame").click( (e)=>{
 });
 
 $("#checkAnswerButton").click( (e) => {
-	console.log("check answer was clicked");
 	var option = $('input[name=options]:checked')[0];
 	if(option){
 		checkAnswer(option.id);
 		$("#checkAnswerButton").addClass('hide');
 		$("#nextButton").removeClass('hide');
+		clearInterval(interval);
+		counter = -1;
 	}
 	else {
 		console.log('eff you pick an answer');
@@ -63,10 +79,12 @@ $("#nextButton").click( (e) => {
 	questions.splice(random, 1);
 	random = getRandomNumber();
 	makeBoard();
+	onClickTimer();
 	$('#nextButton').addClass('hide');
 	$('#checkAnswerButton').removeClass('hide');
 });
 
+let cssBeerTop = 282;
 
 const checkAnswer = (option) => {
 	if ($('input[name=options]:checked').length > 0 && questions[random][option] === questions[random].answer ) {
@@ -74,9 +92,13 @@ const checkAnswer = (option) => {
 		console.log("RIGHT");
 		console.log('correct answer', questions[random].answer);
 		console.log('picked answer', questions[random][option]);
+		$("#triviaBeer").css("top", cssBeerTop -= 15);
+		$("#triviaBeer").css("height", beerAtTrivia += 15);
 	}
 	else {
-		console.log("WRONG");
+		console.log(`WRONG, it's ${questions[random].answer}`);
+		$("#triviaBeer").css("top", cssBeerTop += 15);
+		$("#triviaBeer").css("height", beerAtTrivia -= 15);
 	}
 }
 
@@ -114,18 +136,16 @@ const clearBoard = () => {
 	$("#questionForm").empty();
 }
 
-// --------TRANSFERING BEER LEVEL FROM BAR--------
-console.log(beerVal);
 
-console.log(localStorage.barToTrivia);
+const timesUp = () => {
+	console.log("YOUR TIME IS UP! The correct answer is " + questions[random].answer);
+	$("#checkAnswerButton").addClass('hide');
+	$("#nextButton").removeClass('hide');
+	$("#triviaBeer").css("top", cssBeerTop += 15);
+	$("#triviaBeer").css("height", beerAtTrivia -= 15);
+};
 
-let beerAtTrivia = parseInt(localStorage.barToTrivia);
 
-console.log(beerAtTrivia);
-
-$("#beer").css("height", beerAtTrivia);
-
-//------------------------------------------------
 
 
 

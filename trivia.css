@@ -17,16 +17,16 @@ img {
 	top: 200px;
 	left: 200px;
 }
-#beerMug {
+#triviaBeerMug {
 	z-index: 2;
-	width: 500px;
-	height: 500px;
+	width: 200px;
+	height: 200px;
 }
-#beer {
+#triviaBeer {
 	z-index: 1;
-	width: 300px;
+	width: 125px;
 	height: 0px;
-	top: 557px;
-	left: 217px;
+	top: 282px;
+	left: 205px;
 	border-radius: 25px;
 }

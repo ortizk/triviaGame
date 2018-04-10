@@ -2,20 +2,39 @@
 <html>
 <head>
 	<title>The Bar</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 <body>
-	<h1>Welcome to the Bar</h1>
-	<h3>Fill up your beer by pressing the space bar as fast you can.</h3>
-	<h4>Hurry, you only have 10 seconds!</h4>
-	<a href="home.html">Home</a>
-	<a href="trivia.html">Let's Play!</a>
-	<br>
-		
-	<img src="images/beerMug.png" id="beerMug">
+	<h1 id="theBarHeader">The Bar</h1>
 
-	<img src="images/beer.jpg" id="beer">
 	
+
+		<div class="col-md-4 offset-md-4">
+			<div id="beerAndMug">	
+				<img src="images/beerMug.png" id="beerMug">
+
+				<img src="images/beer.jpg" id="beer">
+			</div>
+		</div>
+		<div class="col-md-4 offset-md-4">
+			<a class="hide" id="playLink"  href="trivia.html">Let's Play!</a>
+		</div>
+	
+	<div class="col-md-2 offset-md-5">
+		<div id="timer1">
+			
+		</div>
+   	</div>
+   	<div class="col-md-6 offset-md-3">
+   		<h1 id="spacebar" class="hide">HIT SPACEBAR!</h1>
+   	</div>
+   		
+   	<div class="col-md-4 offset-md-8">
+   		<div id="timer2">	
+   		</div>
+   	</div>
 
 
 
