@@ -118,7 +118,7 @@ img {
 	text-align: right;
 	font-family: 'Lobster', cursive;
 	color: white;
-	font-size: 50px;
+	font-size: 100px;
 	padding: 7px;
 	text-decoration: none;
 	text-align: center;
@@ -127,8 +127,11 @@ img {
 	text-shadow: 0 0 0.2em #f6ff01, 0 0 0.2em #f6ff01;	
 }
 #timer2 {
+	margin-top: 350px;
+	position: absolute;
+	z-index: 3;
 	font-family: 'Lobster', cursive;
-	font-size: 50px;
+	font-size: 80px;
 	text-shadow: 0 0 0.2em #f6ff01, 0 0 0.2em #f6ff01;
 	color: white;
 }

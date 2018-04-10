@@ -64,7 +64,9 @@ const beerTimer = () => {
 	if(counter2 === timeLeft2){
 		clearInterval(interval2);
 		$("#playLink").removeClass("hide");
-		$("#homeLink").removeClass("hide");			
+		$("#homeLink").removeClass("hide");	
+		$("#spacebar").addClass("hide");
+		
 		$('*').off('keyup');
 	}
 }

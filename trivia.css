@@ -1,10 +1,19 @@
+body {
+	background-image: url("images/barRedLight.jpg");
+}
 h1 {
 	color: pink;
 }
 #currentQuestion {
 	height: 300px;
 	width: 800px;
-	background-color: #d6c7c7;
+	background-color: black;
+}
+p {
+	color: white;
+}
+input {
+	color: white;
 }
 
 .hide {

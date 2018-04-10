@@ -72,9 +72,14 @@ $("#checkAnswerButton").click( (e) => {
 		console.log('eff you pick an answer');
 	}
 });
+let questionCount = 1;
 
 $("#nextButton").click( (e) => {
-	console.log("Next button was clicked");
+	console.log("Next button was clicked, questionCount is at " + questionCount);
+	if(questionCount === 10){
+		console.log("GAME OVER");
+	};
+	questionCount += 1;
 	clearBoard();
 	questions.splice(random, 1);
 	random = getRandomNumber();
@@ -111,25 +116,25 @@ const makeBoard = () => {
 		opt1.type = "radio";
 		opt1.name = "options";
 		opt1.id = "opt1";
-		$("#questionForm").append(opt1, questions[random].opt1);
+		$("#questionForm").append(opt1, "<p>" + questions[random].opt1 + "</p>");
 
 		var opt2 = document.createElement("input");
 		opt2.type = "radio";
 		opt2.name = "options";
 		opt2.id = "opt2"
-		$("#questionForm").append(opt2, questions[random].opt2);
+		$("#questionForm").append(opt2, "<p>" + questions[random].opt2 + "</p>");
 
 		var opt3 = document.createElement("input");
 		opt3.type = "radio";
 		opt3.name = "options";
 		opt3.id = "opt3";
-		$("#questionForm").append(opt3, questions[random].opt3);
+		$("#questionForm").append(opt3, "<p>" + questions[random].opt3 + "</p>");
 
 		var opt4 = document.createElement("input");
 		opt4.type = "radio";
 		opt4.name = "options";
 		opt4.id = "opt4";
-		$("#questionForm").append(opt4, questions[random].opt4);
+		$("#questionForm").append(opt4, "<p>" + questions[random].opt4 + "</p>");
 	};
 
 const clearBoard = () => {
