@@ -107,12 +107,13 @@ const checkAnswer = (option) => {
 
 
 const makeBoard = () => {
-		$("#questionForm").append("<div>" + questions[random].q + "</div>");
+		$("#questionForm").append("<div>" + questionCount +". " + questions[random].q + "</div>");
 
 		// make this into a function
 		var label = document.createElement("label");
 		var opt1 = document.createElement("input");
 		var p = document.createElement("p");
+
 		p.textContent = questions[random].opt1;
 		opt1.type = "radio";
 		opt1.name = "options";
@@ -124,7 +125,7 @@ const makeBoard = () => {
 		}
 		$("#questionForm").append(label);
 
-
+// start of old code----------------------------------------
 		var opt2 = document.createElement("input");
 		opt2.type = "radio";
 		opt2.name = "options";
@@ -153,13 +154,13 @@ const timesUp = () => {
 	console.log("YOUR TIME IS UP! The correct answer is " + questions[random].answer);
 	$("#checkAnswerButton").addClass('hide');
 	$("#nextButton").removeClass('hide');
-	$("#triviaBeer").css("top", cssBeerTop += 15);
 	$("#triviaBeer").css("height", beerAtTrivia -= 15);
+	questions[random].answer.css('color', red);
 };
 
-$('option').click(function(){
-	console.log('an opt was clicked');
-})
+
+
+
 
 
 
