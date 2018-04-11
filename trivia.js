@@ -20,13 +20,13 @@ $('#beerMugTrivia').css('right', 0);
 // -------------TIMER-----------
 
 var timer = $("#timer");
-var timeLeft = 5;
+var timeLeft = 10;
 var interval;
 
 $("#timer").text(timeLeft)
 
 const onClickTimer = () => {
-	timeLeft = 5;
+	timeLeft = 10;
 	timer.text(timeLeft);
 	const timeIt = () => {
 		timeLeft--;
@@ -77,17 +77,25 @@ let questionCount = 1;
 $("#nextButton").click( (e) => {
 	console.log("Next button was clicked, questionCount is at " + questionCount);
 	if(questionCount === 10){
-		console.log("GAME OVER");
-		// put whatever you want to happen in this if statement. Whether it's a new function or whatever
-	};
-	questionCount += 1;
-	clearBoard();
-	questions.splice(random, 1);
-	random = getRandomNumber();
-	makeBoard();
-	onClickTimer();
-	$('#nextButton').addClass('hide');
-	$('#checkAnswerButton').removeClass('hide');
+		gameOver();
+	}
+	else if(questionCount === 1){
+		$("#checkStatus").remove
+	}
+		
+	else {
+		$("#rightBut").addClass("hide");
+		questionCount += 1;
+		clearBoard();
+		questions.splice(random, 1);
+		random = getRandomNumber();
+		makeBoard();
+		onClickTimer();
+		$('#nextButton').addClass('hide');
+		$('#checkAnswerButton').removeClass('hide');
+		$("#wrongAnswer").text(questions[random].answer).addClass("hide");
+		$("#right").text("RIGHT! More Beer For You!").addClass("hide");
+	}
 });
 
 
@@ -97,53 +105,50 @@ const checkAnswer = (option) => {
 		console.log("RIGHT");
 		console.log('correct answer', questions[random].answer);
 		console.log('picked answer', questions[random][option]);
-		$("#triviaBeer").css("height", beerAtTrivia += 15);
+		$("#right").text("RIGHT! More Beer For You!").removeClass("hide");
+		if(beerAtTrivia < 290){
+			$("#triviaBeer").css("height", beerAtTrivia += 15);
+		}
+		else {
+			$("#rightBut").text("THAT'S RIGHT but there's no more room in your mug for more beer! Keep Going!").removeClass("hide");
+		}	
 	}
 	else {
 		console.log(`WRONG, it's ${questions[random].answer}`);
-		$("#triviaBeer").css("height", beerAtTrivia -= 15);
+		if(beerAtTrivia >= 0){
+			$("#triviaBeer").css("height", beerAtTrivia -= 15);
+		};
+		$("#wrongAnswer").text(`WRONG! The correct answer is ${questions[random].answer}`).removeClass("hide");
+
 	}
+}
+
+const makeOption = (name) => {
+	var label = document.createElement("label");
+	var opt = document.createElement("input");
+	var p = document.createElement("p");
+
+	p.textContent = questions[random][name];
+	opt.type = "radio";
+	opt.name = "options";
+	opt.id = name;
+	label.appendChild(opt);
+	label.appendChild(p);
+	label.onclick = function(){
+		clearInterval(interval);
+	}
+	$("#questionForm").append(label);
 }
 
 
 const makeBoard = () => {
-		$("#questionForm").append("<div>" + questionCount +". " + questions[random].q + "</div>");
+	$("#questionForm").append("<div>" + questionCount +". " + questions[random].q + "</div>");
 
-		// make this into a function
-		var label = document.createElement("label");
-		var opt1 = document.createElement("input");
-		var p = document.createElement("p");
-
-		p.textContent = questions[random].opt1;
-		opt1.type = "radio";
-		opt1.name = "options";
-		opt1.id = "opt1";
-		label.appendChild(opt1);
-		label.appendChild(p);
-		label.onclick = function(){
-			clearInterval(interval);
-		}
-		$("#questionForm").append(label);
-
-// start of old code----------------------------------------
-		var opt2 = document.createElement("input");
-		opt2.type = "radio";
-		opt2.name = "options";
-		opt2.id = "opt2"
-		$("#questionForm").append(opt2, "<p>" + questions[random].opt2 + "</p>");
-
-		var opt3 = document.createElement("input");
-		opt3.type = "radio";
-		opt3.name = "options";
-		opt3.id = "opt3";
-		$("#questionForm").append(opt3, "<p>" + questions[random].opt3 + "</p>");
-
-		var opt4 = document.createElement("input");
-		opt4.type = "radio";
-		opt4.name = "options";
-		opt4.id = "opt4";
-		$("#questionForm").append(opt4, "<p>" + questions[random].opt4 + "</p>");
-	};
+	makeOption("opt1");
+	makeOption("opt2");
+	makeOption("opt3");
+	makeOption("opt4");
+};
 
 const clearBoard = () => {
 	$("#questionForm").empty();
@@ -151,11 +156,41 @@ const clearBoard = () => {
 
 
 const timesUp = () => {
-	console.log("YOUR TIME IS UP! The correct answer is " + questions[random].answer);
-	$("#checkAnswerButton").addClass('hide');
-	$("#nextButton").removeClass('hide');
-	$("#triviaBeer").css("height", beerAtTrivia -= 15);
+	if(questionCount === 10){
+		gameOver();
+		$("#wrongAnswer").text(`Time's up! The answer is ${questions[random].answer}`).removeClass("hide");
+	}
+	else {
+		console.log("YOUR TIME IS UP! The correct answer is " + questions[random].answer);
+		$("#checkAnswerButton").addClass('hide');
+		$("#nextButton").removeClass('hide');
+		$("#triviaBeer").css("height", beerAtTrivia -= 15);
+		$("#wrongAnswer").text(`Time's up! The answer is ${questions[random].answer}`).removeClass("hide");
+		$("#rightBut").addClass("hide");
+
+	}
+		
 };
+
+const gameOver = () => {
+		clearBoard();
+		$("#wrongAnswer").addClass("hide");
+		$("#nextButton").addClass('hide');
+		$("#checkAnswerButton").addClass('hide');
+		$("#playAgainLink").removeClass('hide');
+		$("#rightBut").addClass("hide");
+		$("#right").addClass("hide");
+		if(beerAtTrivia >= 200){
+			$("#status").text("Genius Status! Thanks for Playing!")
+		}
+		else if(beerAtTrivia >= 100 && beerAtTrivia <= 199){
+			$("#status").text("Not Too Shabby! Thanks for Playing!")
+		}
+		else {
+			$("#status").text("Guess It's Not Your Night! Thanks for Playing!");
+		}
+};
+
 
 
 

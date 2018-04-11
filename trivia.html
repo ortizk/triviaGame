@@ -9,19 +9,36 @@
 </head>
 <body>
 	<h1>Let's Play!</h1>
+	<div id="timer" class="hide"></div>
+	<div id="startButtonDiv"><button id="startGame">START</button></div>
 	<div class="container">
 		<div class="row">
 			<div class="col">
 				<div id="currentQuestion">
-					<button id="startGame">START</button>
 					<div class="container">
-						<form id="questionForm">
-						</form>
-					</div>
+						<div id="questionOptionCrunch">
+							<form id="questionForm">
+							</form>
+						</div>
 					<!-- <div class="col-md-2 offset-md-5"> -->
 						<button id="checkAnswerButton" class="hide">Check Answer</button>
 						<button id="nextButton" class="hide">Next Question</button>
+						<button id="checkStatus" class="hide">You're Done! Check Your Status</button>
 					<!-- </div> -->
+					<div id="wrongAnswer" class="alert alert-danger hide" role="alert">
+					</div>
+					<!-- <div id="gameOver" class="alert alert-warning hide" role="alert">
+					</div> -->
+					</div>
+					<div id="status">
+					</div>
+					<div class="row">
+						<a id="playAgainLink" href="bar.html" class="hide">GAME OVER Play Again</a>
+					</div>
+					<div id="rightBut" class="alert alert-success hide" role="alert">
+					</div>
+					<div id="right" class="alert alert-success hide" role="alert">
+					</div>
 				</div>
 			</div>
 			
@@ -31,11 +48,7 @@
 			<img src="images/beer.jpg" id="triviaBeer">
 		</div>
 	</div>
-	<div class="row">
-		<a id="homeLink" href="home.html">Home</a>
-		<div id="timer" class="hide"></div>
-	</div>
-
+	
 			
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="questions.js"></script>
