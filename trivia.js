@@ -79,9 +79,12 @@ $("#nextButton").click( (e) => {
 	if(questionCount === 10){
 		gameOver();
 	}
-	else if(questionCount === 1){
-		$("#checkStatus").remove
-	}
+	// else if(questionCount === 1){
+	// 	$("#checkStatus").removeClass("hide");
+	// 	$("#nextButton").addClass("hide");
+	// 	$("#wrongAnswer").addClass('hide');
+	// 	$("#right").addClass('hide');
+	// }
 		
 	else {
 		$("#rightBut").addClass("hide");
